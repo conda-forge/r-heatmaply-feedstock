@@ -1,4 +1,4 @@
-{% set version = "0.15.0" %}
+{% set version = "0.15.2" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,7 +12,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/heatmaply_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/heatmaply/heatmaply_{{ version }}.tar.gz
-  sha256: 62457faf3442c2e957302445847dc02d151d092d81dbed6a4feb6dee68b5240c
+  sha256: 04f032c6c7792387c78c78ad41d85f3377bea4b94a31cab5aab912f9652b1a41
 
 build:
   number: 0
