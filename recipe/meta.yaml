@@ -1,5 +1,4 @@
-{% set version = "0.15.2" %}
-
+{% set version = '0.15.2' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,12 +9,13 @@ package:
 source:
   fn: heatmaply_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/heatmaply_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/heatmaply/heatmaply_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/heatmaply_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/heatmaply/heatmaply_{{ version }}.tar.gz
   sha256: 04f032c6c7792387c78c78ad41d85f3377bea4b94a31cab5aab912f9652b1a41
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -23,6 +23,8 @@ build:
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-rcolorbrewer
     - r-assertthat
@@ -38,7 +40,6 @@ requirements:
     - r-seriation
     - r-viridis
     - r-webshot
-
   run:
     - r-base
     - r-rcolorbrewer
@@ -58,11 +59,12 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('heatmaply')"  # [not win]
+    - $R -e "library('heatmaply')"           # [not win]
     - "\"%R%\" -e \"library('heatmaply')\""  # [win]
 
 about:
-  home: https://cran.r-project.org/package=heatmaply, https://github.com/talgalili/heatmaply/, https://www.r-statistics.com/tag/heatmaply/
+  home: https://cran.r-project.org/package=heatmaply, https://github.com/talgalili/heatmaply/,
+    https://www.r-statistics.com/tag/heatmaply/
   license: GPL-2 | GPL-3
   summary: Create interactive cluster 'heatmaps' that can be saved as a stand- alone HTML file,
     embedded in 'R Markdown' documents or in a 'Shiny' app, and available in the 'RStudio'
@@ -84,8 +86,9 @@ about:
 
 extra:
   recipe-maintainers:
-    - cbrueffer
     - johanneskoester
     - bgruening
     - daler
     - jdblischak
+    - cbrueffer
+    - dbast
