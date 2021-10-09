@@ -1,4 +1,4 @@
-{% set version = "1.2.1" %}
+{% set version = "1.3.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/heatmaply_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/heatmaply/heatmaply_{{ version }}.tar.gz
-  sha256: 2dddf6741eaaa49c1354b7092ded5ac6d06df9d6accd879c16c6731bed745743
+  sha256: 0a5d269c4837dd66fbfa6b87fd648bdef222f1ad6f33df3f695d5164d6f71ef1
 
 build:
   merge_build_host: true  # [win]
