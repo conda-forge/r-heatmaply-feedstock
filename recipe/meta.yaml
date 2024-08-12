@@ -1,6 +1,5 @@
 {% set version = "1.5.0" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-heatmaply
@@ -13,8 +12,7 @@ source:
   sha256: aca4dd8b0181aa97969c8c25c73343e294c4d9c24e7cbf52e97fecbed5a92db3
 
 build:
-  merge_build_host: true  # [win]
-  number: 0
+  number: 1
   noarch: generic
   rpaths:
     - lib/R/lib/
